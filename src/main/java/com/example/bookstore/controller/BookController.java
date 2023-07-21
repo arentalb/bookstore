@@ -1,5 +1,6 @@
 package com.example.bookstore.controller;
 
+import com.example.bookstore.exeptions.NotAdminExeption;
 import com.example.bookstore.model.Book;
 import com.example.bookstore.scopeServices.LoggendinAdminService;
 import com.example.bookstore.scopeServices.LoggendinUserService;
@@ -27,7 +28,7 @@ public class BookController {
     public String getAdmin(){
         String message  ;
         if (loggendinAdminService.getName()== null ){
-            message = " you are not admin and you not allowed ";
+            throw new NotAdminExeption() ;
         }else {
             message = "welcome to admin page " ;
         }
