@@ -4,6 +4,7 @@ import com.example.bookstore.model.User;
 import com.example.bookstore.scopeServices.LoggendinAdminService;
 import com.example.bookstore.scopeServices.LoggendinUserService;
 import com.example.bookstore.scopeServices.LogginProccess;
+import com.example.bookstore.service.BookService;
 import com.example.bookstore.service.LoginService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,15 +19,18 @@ public class LoginController {
     private final LogginProccess logginProccess;
     private final LoggendinUserService loggendinUserService;
     private final LoggendinAdminService loggendinAdminService;
+    private final BookService bookService;
 
     public LoginController(LoginService loginService,
                            LogginProccess logginProccess,
                            LoggendinUserService loggendinUserService,
-                           LoggendinAdminService loggendinAdminService) {
+                           LoggendinAdminService loggendinAdminService,
+                           BookService bookService) {
         this.loginService = loginService;
         this.logginProccess = logginProccess;
         this.loggendinUserService = loggendinUserService;
         this.loggendinAdminService = loggendinAdminService;
+        this.bookService = bookService;
 
     }
 
@@ -37,6 +41,7 @@ public class LoginController {
         if (logout != null) {
             loggendinUserService.setName(null);
             loggendinAdminService.setName(null);
+            bookService.emptyCart();
             message = "you logged out ";
         }else {
             message = "no one logend in  ";
