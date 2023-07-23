@@ -17,22 +17,20 @@ public class LoginService {
     }
 
     public void addUser(User newUser) {
-
-        loginRepository.users.add(newUser);
+        loginRepository.addUser(newUser);
     }
 
-    public void deleteUser(User targetUser) {
-        loginRepository.users.remove(targetUser);
+    public void deleteUser(User targetUser){
+        loginRepository.deleteUser(targetUser);
+
     }
 
     public List<User> getUsers() {
-
-        return loginRepository.users;
+        return  loginRepository.getUsers();
     }
 
     public List<User> getAdmins() {
-
-        return loginRepository.admins;
+      return   loginRepository.getAdmins();
     }
 
 }
