@@ -14,33 +14,26 @@ public class BookService {
     }
 
     public void addBookToCart(Book book ){
-        bookRepository.booksInCart.add(book);
+        bookRepository.addBookToCart(book);
 
     }
     public List<Book> getBookFromCart(  ){
 
-        return bookRepository.booksInCart;
+        return bookRepository.getBookFromCart();
     }
     public void deleteBookFromCart(Book book){
-
-        for(Book b :bookRepository.booksInCart){
-            if (b.getName().equals(book.getName())){
-                bookRepository.booksInCart.remove(b);
-                break;
-            }
-        }
-
+        bookRepository.deleteBookFromCart( book);
     }
     public void emptyCart( ){
-        bookRepository.booksInCart.clear();
+        bookRepository.emptyCart();
     }
 
     public void addBookToStore(Book book ){
-        bookRepository.booksInStore.add(book);
+        bookRepository.addBookToStore(book);
     }
     public List<Book> getBookFromStore(){
 
-        return bookRepository.booksInStore;
+        return bookRepository.getBookFromStore();
     }
 
 
